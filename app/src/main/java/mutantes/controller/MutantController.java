@@ -25,9 +25,7 @@ public class MutantController {
     @PostMapping("/mutants")
     public ResponseEntity<String> isMutant(@RequestBody DnaRequest dnaRequest) {
         boolean isMutant = mutantService.isMutant(dnaRequest.getDna());
-        
         String dnaString = String.join(",", dnaRequest.getDna());
-        
         if (isMutant) {
             if (!dnaRecordRepository.existsByDna(dnaString)) {
                 System.out.println("El ADN no existe, se procederá a guardar: " + dnaString);
@@ -39,10 +37,9 @@ public class MutantController {
                 System.out.println("El ADN ya existe: " + dnaString);
             }
         }
-
-        return isMutant 
-            ? ResponseEntity.ok("Mutant detected")
-            : new ResponseEntity<>("Not a mutant", HttpStatus.FORBIDDEN);
+        return isMutant
+                ? ResponseEntity.ok("Mutant detected")
+                : new ResponseEntity<>("Not a mutant", HttpStatus.FORBIDDEN);
     }
 
     @GetMapping("/stats")
@@ -50,7 +47,6 @@ public class MutantController {
         long countMutantDna = dnaRecordRepository.countByIsMutant(true);
         long countHumanDna = dnaRecordRepository.countByIsMutant(false);
         double ratio = (countHumanDna > 0) ? (double) countMutantDna / countHumanDna : 0;
-
         DnaStats stats = new DnaStats(countMutantDna, countHumanDna, ratio);
 
         return ResponseEntity.ok(stats);

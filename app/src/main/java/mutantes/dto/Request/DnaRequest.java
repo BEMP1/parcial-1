@@ -3,7 +3,6 @@ package mutantes.dto.Request;
 public class DnaRequest {
     private String[] dna;
 
-
     public String[] getDna() {
         return dna;
     }

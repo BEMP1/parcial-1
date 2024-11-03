@@ -1,18 +1,18 @@
 package mutantes.dto;
 
 public class DnaStats {
-    private long countMutantDna; 
-    private long countHumanDna;  
-    private double ratio;    
+    private long countMutantDna;
+    private long countHumanDna;
+    private double ratio;
 
     public DnaStats(long countMutantDna, long countHumanDna, double ratio) {
-        this.countMutantDna = countMutantDna; 
-        this.countHumanDna = countHumanDna;  
-        this.ratio = ratio; 
+        this.countMutantDna = countMutantDna;
+        this.countHumanDna = countHumanDna;
+        this.ratio = ratio;
     }
 
     public long getCountMutantDna() {
-        return countMutantDna; 
+        return countMutantDna;
     }
 
     public void setCountMutantDna(long countMutantDna) {
